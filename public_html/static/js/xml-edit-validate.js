@@ -26,8 +26,19 @@ function init() {
 		root = ($xml.find("*").eq(0)[0]);
 		rootName = root.nodeName;
 		xmlns = $( root ).attr("xmlns");
-		schema = $( root ).attr("xsi:schemaLocation")
-		alert(schema);
+		schemastr = $( root ).attr("xsi:schemaLocation");
+		
+		schemaParts = schemastr.split(" ");
+		schema = {};
+		for (var i=0; i < schemaParts.length; i++) {
+            if ( i === 0 || (i % 2) === 0 ) {
+                schema[schemaParts[i]] = "";
+            } else {
+                schema[schemaParts[i-1]] = schemaParts[i];
+            }
+		}
+		alert(schemaParts);
+		alert(schema.toSource());
 	});
 	
 }
