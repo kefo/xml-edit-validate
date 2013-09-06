@@ -48,48 +48,32 @@ function init() {
         } else {
             xmlns = $( root ).attr("xmlns");
         }
-		alert(xmlns);
+		//alert(xmlns);
 		
 		schema = schemas[xmlns];
-		alert(schema);
+		//alert(schema);
 		
-		$.get("getschema.php", { schemaLoc: schema })
-        .done(function(data) { 
-            if (data.error === false) {
-                schemastr = data.content;
-                
-                xmlData = $.trim(xml);
-                xmlData = '<?xml version="1.0" encoding="utf-8" ?>' + xmlData;
-                xsdData = $.trim(schemastr);
-                xsdData = xsdData.replace('<!-- edited with Altova Professional XML Suite 2006 (http://www.xmlspy.com) by Ray Denenberg  (Library of Congress) -->', '');
-                alert(xsdData);
-                //xsdData = '<?xml version="1.0" encoding="utf-8" ?>' + xsdData;
-                
-                $.post("validate.php", { xmlData: xmlData, xsdData: xsdData })
-                .done(function(d) {
-                    alert(d);
-                })
-                /*
-                // XMLLINT
-                var Module = {
-                    xml: xml,
-                    schema: schemastr,
-                    arguments: ["--noout", "--schema", "schema.xsd", "data.xml"]
-                };
- 
-                //and call function
-                var xmllint = validateXML(Module);
-                alert(xmllint.toSource());
-                */
-                
-            } else{
-                alert("Server failed to retrieve schema. " + data.toSource());
-            }
-            
-        })
-        .fail(function(data) { alert("Error retrieving schema."); });
+		$.post("validate.php", { xmlData: xml, xsdLoc: schema })
+            .done(function(d) {
+                //alert(d);
+                response = $.parseJSON(d);
+				idiv = $("#info");
+				if (response.error) {
+					var messagediv = $('<div id="responsemessage" class="alert alert-danger">' + response.msg + '</div>');
+					idiv.append(messagediv);
+					messagediv.fadeOut(30000, function() {
+						idiv.empty();
+					});
+				} else {
+					var messagediv = $('<div id="responsemessage" class="alert alert-success">' + response.msg + '</div>');
+					idiv.append(messagediv);
+					messagediv.fadeOut(4000, function() {
+						idiv.empty();
+					});
+				}
+            })
 		
-		
+
 	});
 	
 }
