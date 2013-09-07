@@ -89,7 +89,7 @@ class Validate
             if ($this->xsdloc != "") {
                 //$cmd = 'xmlstarlet val -e -s "http://www.loc.gov/standards/mods/mods.xsd" ' . $tempFile;
                 $cmd = '/usr/bin/xmllint --noout --schema "' . $this->xsdloc . '" ' . $this->xmlloc;
-                
+                //$result["msg"] = $cmd;
                 $handle = popen($cmd . ' 2>&1', 'r');
                 //echo "'$handle'; " . gettype($handle) . "\n";
                 //$read = fread($handle, 20480);
@@ -106,6 +106,7 @@ class Validate
                     $result["valid"] = false;
                     $result["error"] = true;
                     $result["msg"] = trim($msg);
+
                 }
                 
                 // Delete temporary file.
