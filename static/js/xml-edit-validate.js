@@ -31,7 +31,8 @@ function init() {
             root = ($xml.find("*").eq(0)[0]);
             doValidation(xml, root);
         } catch(e) {
-            var messagediv = $('<div id="responsemessage" class="alert alert-danger">' + e + 'XML NOT well-formed.  Mismatched tags?  Missing namespace declaration?</div>');
+            //alert(e);
+            var messagediv = $('<div id="responsemessage" class="alert alert-danger">XML likely NOT well-formed (' + e.toString() + ').');
 			idiv.append(messagediv);
 			messagediv.fadeOut(30000, function() {
 				idiv.empty();
