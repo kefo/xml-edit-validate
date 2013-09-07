@@ -41,14 +41,16 @@ class Validate
     }
     
     function setXMLdata($data) {
-        $this->xmldata = $data;
+        $this->xmldata = stripslashes($data);
 
         $this->xmldoc = new DOMDocument();
         $this->xmldoc->loadXML($data);
         
         if ($this->method == "hack") {
             $tempFile = "tmp/" . time() . '-' . rand() . '-document.tmp';
-            $this->xmldoc->save($tempFile);
+            //$this->xmldoc->save($tempFile);
+            //$xmlout = $this->xmldoc->saveXML();
+            file_put_contents($tempFile, $this->xmldata);
             $this->xmlloc = $tempFile;
         }
     }
@@ -100,6 +102,8 @@ class Validate
                 //echo $read;
                 pclose($handle);
                 
+                //$result["xmldata"] = $this->xmldata;
+                //$result["msg"] = $read[0];
                 if (strpos($read[1], "fails to") !== false) {
                     $pos = strpos($read[0], '.tmp:');
                     $msg = substr($read[0], $pos + 7);

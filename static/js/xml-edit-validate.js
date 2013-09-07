@@ -22,7 +22,7 @@ function init() {
 	
 	$( "#validate" ).click(function() {
 		var xml = editor.getSession().getValue();
-		
+		//alert(xml);
 		idiv = $("#info");
 		idiv.empty();
 		try {
@@ -73,7 +73,7 @@ function doValidation(xml, root) {
 		if ( typeof xmlns !== 'undefined' ) { 
 		    schema = schemas[xmlns];
 		    //alert(schema);
-		
+		    //alert(xml);
 		    $.post("validate.php", { xmlData: xml, xsdLoc: schema })
                 .done(function(d) {
                     //alert(d);

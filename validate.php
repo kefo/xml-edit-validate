@@ -22,5 +22,6 @@ if ($xsddata != "") { $validate->setXSDdata($xsddata); }
 
 $valid = $validate->isValid();
 echo json_encode($valid);
+//echo $xmldata;
 
 ?>
