@@ -104,13 +104,15 @@ class Validate
                 
                 //$result["xmldata"] = $this->xmldata;
                 //$result["msg"] = $read[0];
-                if (strpos($read[1], "fails to") !== false) {
+                if (strpos($read[ count($read)-1 ], "fails to") !== false) {
                     $pos = strpos($read[0], '.tmp:');
-                    $msg = substr($read[0], $pos + 7);
+                    $msg = substr($read[0], $pos + 8);
                     $result["valid"] = false;
                     $result["error"] = true;
-                    $result["msg"] = trim($msg);
+                    $result["msg"] = "Total no. of errors: " . (count($read)-1) . "; Error 1: " . trim($msg);
 
+                } else {
+                    $result["output"] = $read[5];
                 }
                 
                 // Delete temporary file.
