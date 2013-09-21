@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<vra:vra xsi:schemaLocation="http://www.vraweb.org/vracore4.htm http://www.loc.gov/standards/vracore/vra.xsd"
+    xmlns:vra="http://www.vraweb.org/vracore4.htm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <vra:work />
+</vra:vra>
