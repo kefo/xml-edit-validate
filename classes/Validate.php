@@ -112,7 +112,7 @@ class Validate
                     $result["msg"] = "Total no. of errors: " . (count($read)-1) . "; Error 1: " . trim($msg);
 
                 } else {
-                    $result["output"] = $read[5];
+                    $result["output"] = $read;
                 }
                 
                 // Delete temporary file.
