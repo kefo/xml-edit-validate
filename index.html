@@ -8,6 +8,7 @@
     <link href="static/css/bootstrap.css" rel="stylesheet">
     <title>Editor</title>
     <script src="static/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="static/js/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="static/js/vkbeautify.0.99.00.beta.js" type="text/javascript" charset="utf-8"></script>
     <script src="static/js/xmllint.js" type="text/javascript" charset="utf-8"></script>
@@ -43,7 +44,7 @@
             <a style="max-width: 300px;" href="./" class="navbar-brand">XML Create 
                 <i>&amp; </i>Validate
             </a>
-            <div class="nav-collapse collapse pull-right">
+            <div class="pull-right">
                 <ul class="nav nav-pills">
                     <!--
                     <li>
@@ -53,6 +54,17 @@
                         <a href="#about">Save</a>
                     </li>
                     -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Base records <span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="base-records">
+                            <li><a href="#">OAI Dublin Core</a></li>
+                            <li><a href="#">MODS 3.5</a></li>
+                            <li><a href="#">VRA Core 4.0</a></li>
+                            <li><a href="#">CDWA Lite</a></li>
+                            <li><a href="#">Audio MD</a></li>
+                            <li><a href="#">MIX</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a id="prettify" href="#prettify">Prettify</a>
                     </li>
