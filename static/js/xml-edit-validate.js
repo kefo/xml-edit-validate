@@ -4,15 +4,29 @@ $(document).ready(init);
 function init() {
     
     $('.dropdown-toggle').dropdown();
+    
+    appURL = window.location.href;
+    appURL = appURL.replace("index.html",""); 
+    xsddir = appURL + "xsd/"
+    //alert(xsddir);
 
+	/*
 	mods35 = '<?xml version="1.0"?><mods:mods version="3.5" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-5.xsd" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><mods:titleInfo><mods:title>Title</mods:title></mods:titleInfo></mods:mods>';
 	oaidc = '<?xml version="1.0"?><oai_dc:dc xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>this is a title</dc:title></oai_dc:dc>';
 	vra4 = '<?xml version="1.0"?><vra:vra xsi:schemaLocation="http://www.vraweb.org/vracore4.htm http://www.loc.gov/standards/vracore/vra.xsd" xmlns:vra="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><vra:work /><vra:image /></vra:vra>';
 	cdwalite = '<?xml version="1.0"?><cdwalite:cdwalite xmlns:cdwalite="http://www.getty.edu/CDWA/CDWALite" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.getty.edu/CDWA/CDWALite http://www.getty.edu/CDWA/CDWALite/CDWALite-xsd-public-v1-1.xsd"><cdwalite:descriptiveMetadata /><cdwalite:administrativeMetadata><cdwalite:recordWrap /><cdwalite:resourceWrap /></cdwalite:administrativeMetadata></cdwalite:cdwalite>';
     audiomd = '<?xml version="1.0"?><audiomd:AUDIOMD xmlns:audiomd="http://www.loc.gov/audioMD/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/audioMD/ http://www.loc.gov/standards/amdvmd/audioMD.xsd" ANALOGDIGITALFLAG="FileDigital"></audiomd:AUDIOMD>';
     mix = '<?xml version="1.0"?><mix:mix xmlns:mix="http://www.loc.gov/mix/v20" xsi:schemaLocation="http://www.loc.gov/mix/v20 http://www.loc.gov/standards/mix/mix20/mix20.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><mix:BasicDigitalObjectInformation /><mix:BasicImageInformation /></mix:mix>';
+    */
+    
+	mods35 = '<?xml version="1.0"?><mods:mods version="3.5" xsi:schemaLocation="http://www.loc.gov/mods/v3 ' + xsddir + 'mods-3-5.xsd" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><mods:titleInfo><mods:title>Title</mods:title></mods:titleInfo></mods:mods>';
+	oaidc = '<?xml version="1.0"?><oai_dc:dc xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>this is a title</dc:title></oai_dc:dc>';
+	vra4 = '<?xml version="1.0"?><vra:vra xsi:schemaLocation="http://www.vraweb.org/vracore4.htm ' + xsddir + 'vra.xsd" xmlns:vra="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><vra:work /><vra:image /></vra:vra>';
+	cdwalite = '<?xml version="1.0"?><cdwalite:cdwalite xmlns:cdwalite="http://www.getty.edu/CDWA/CDWALite" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.getty.edu/CDWA/CDWALite http://www.getty.edu/CDWA/CDWALite/CDWALite-xsd-public-v1-1.xsd"><cdwalite:descriptiveMetadata /><cdwalite:administrativeMetadata><cdwalite:recordWrap /><cdwalite:resourceWrap /></cdwalite:administrativeMetadata></cdwalite:cdwalite>';
+    audiomd = '<?xml version="1.0"?><audiomd:AUDIOMD xmlns:audiomd="http://www.loc.gov/audioMD/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/audioMD/ ' + xsddir + 'audioMD.xsd" ANALOGDIGITALFLAG="FileDigital"></audiomd:AUDIOMD>';
+    mix = '<?xml version="1.0"?><mix:mix xmlns:mix="http://www.loc.gov/mix/v20" xsi:schemaLocation="http://www.loc.gov/mix/v20 ' + xsddir + 'mix20.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><mix:BasicDigitalObjectInformation /><mix:BasicImageInformation /></mix:mix>';
 
-    xml = vra4;
+    xml = oaidc;
 
 	// Set up the editor
 	var editor = ace.edit("editor");
