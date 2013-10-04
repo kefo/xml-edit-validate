@@ -6,6 +6,7 @@ function init() {
     $('.dropdown-toggle').dropdown();
     
     appURL = window.location.href;
+    appURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
     appURL = appURL.replace("index.html",""); 
     xsddir = appURL + "xsd/"
     //alert(xsddir);
@@ -34,6 +35,11 @@ function init() {
     editor.getSession().setMode("ace/mode/xml");
     editor.getSession().setValue(xml);
     editor.resize();
+    
+    var fontsize = getParameterByName("font-size");
+    if (parseInt(fontsize) > 0) {
+        editor.setFontSize(parseInt(fontsize));
+    }
           
     $( "#base-records > li > a").click(function() {
         var xml = editor.getSession().getValue();
@@ -160,3 +166,15 @@ function doValidation(xml, root) {
         }
     }
 }
+
+
+// You don't need jQuery for that purpose. You can use pure JavaScript:
+// http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+
