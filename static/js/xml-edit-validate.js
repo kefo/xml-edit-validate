@@ -123,24 +123,33 @@ function doValidation(xml, root) {
 		    schema = schemas[xmlns];
 		    //alert(schema);
 		    //alert(xml);
-		    $.post("validate.php", { xmlData: xml, xsdLoc: schema })
-                .done(function(d) {
-                    //alert(d);
-                    response = $.parseJSON(d);
-				    if (response.error) {
-					    var messagediv = $('<div id="responsemessage" class="alert alert-danger">' + response.msg + '</div>');
-					    idiv.append(messagediv);
-					    messagediv.fadeOut(30000, function() {
-						    idiv.empty();
-					    });
-				    } else {
-					    var messagediv = $('<div id="responsemessage" class="alert alert-success">' + response.msg + '</div>');
-					    idiv.append(messagediv);
-					    messagediv.fadeOut(4000, function() {
-					    	idiv.empty();
-					    });
-				    }
-                });
+		    if ( typeof schema !== 'undefined' ) { 
+		        $.post("validate.php", { xmlData: xml, xsdLoc: schema })
+                    .done(function(d) {
+                        //alert(d);
+                        response = $.parseJSON(d);
+	    			    if (response.error) {
+		    			    var messagediv = $('<div id="responsemessage" class="alert alert-danger">' + response.msg + '</div>');
+			    		    idiv.append(messagediv);
+				    	    messagediv.fadeOut(30000, function() {
+					    	    idiv.empty();
+					        });
+    				    } else {
+	    				    var messagediv = $('<div id="responsemessage" class="alert alert-success">' + response.msg + '</div>');
+		    			    idiv.append(messagediv);
+			    		    messagediv.fadeOut(4000, function() {
+				    	    	idiv.empty();
+					        });
+    				    }
+                    });
+		    } else {
+		        var messagediv = $('<div id="responsemessage" class="alert alert-danger">Unable to determine Scheme (XSD) file</div>');
+			    idiv.append(messagediv);
+    			messagediv.fadeOut(30000, function() {
+			        idiv.empty();
+			    });
+			    return true;
+		    }
         } else {
 		    var messagediv = $('<div id="responsemessage" class="alert alert-danger">Unable to determine Scheme (XSD) file</div>');
 			idiv.append(messagediv);
