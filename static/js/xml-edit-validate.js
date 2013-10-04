@@ -26,6 +26,7 @@ function init() {
 	cdwalite = '<?xml version="1.0"?><cdwalite:cdwalite xmlns:cdwalite="http://www.getty.edu/CDWA/CDWALite" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.getty.edu/CDWA/CDWALite http://www.getty.edu/CDWA/CDWALite/CDWALite-xsd-public-v1-1.xsd"><cdwalite:descriptiveMetadata /><cdwalite:administrativeMetadata><cdwalite:recordWrap /><cdwalite:resourceWrap /></cdwalite:administrativeMetadata></cdwalite:cdwalite>';
     audiomd = '<?xml version="1.0"?><audiomd:AUDIOMD xmlns:audiomd="http://www.loc.gov/audioMD/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/audioMD/ ' + xsddir + 'audioMD.xsd" ANALOGDIGITALFLAG="FileDigital"></audiomd:AUDIOMD>';
     mix = '<?xml version="1.0"?><mix:mix xmlns:mix="http://www.loc.gov/mix/v20" xsi:schemaLocation="http://www.loc.gov/mix/v20 ' + xsddir + 'mix20.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><mix:BasicDigitalObjectInformation /><mix:BasicImageInformation /></mix:mix>';
+    mets = '<?xml version="1.0" encoding="UTF-8"?><mets:mets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mets="http://www.loc.gov/METS/" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:audiomd="http://www.loc.gov/audioMD/" xmlns:mix="http://www.loc.gov/mix/v20" xmlns:cdwalite="http://www.getty.edu/CDWA/CDWALite" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd"><mets:dmdSec ID="DMD1" /><mets:fileSec><mets:fileGrp /></mets:fileSec><mets:structMap><mets:div /></mets:structMap></mets:mets>';
 
     xml = oaidc;
 
@@ -56,6 +57,8 @@ function init() {
             xml = audiomd;
         } else if (t == "MIX") { 
             xml = mix;
+        } else if (t == "METS") { 
+            xml = mets;
         }
         editor.getSession().setValue(xml);
     });
