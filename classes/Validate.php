@@ -91,7 +91,7 @@ class Validate
             if ($this->xsdloc != "") {
                 //$cmd = 'xmlstarlet val -e -s "http://www.loc.gov/standards/mods/mods.xsd" ' . $tempFile;
                 $cmd = '/usr/bin/xmllint --noout --schema "' . $this->xsdloc . '" ' . $this->xmlloc;
-                //$result["msg"] = $cmd;
+                $result["cmd"] = $cmd;
                 $handle = popen($cmd . ' 2>&1', 'r');
                 //echo "'$handle'; " . gettype($handle) . "\n";
                 //$read = fread($handle, 20480);
@@ -103,6 +103,7 @@ class Validate
                 pclose($handle);
                 
                 //$result["xmldata"] = $this->xmldata;
+                //$result["xsddata"] = $this->xsddata;
                 //$result["msg"] = $read[0];
                 if (strpos($read[ count($read)-1 ], "fails to") !== false) {
                     $pos = strpos($read[0], '.tmp:');
