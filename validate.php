@@ -20,7 +20,7 @@ if ($xsdloc != "") { $validate->getXSD($xsdloc); }
 if ($xmldata != "") { $validate->setXMLdata($xmldata); }
 if ($xsddata != "") { $validate->setXSDdata($xsddata); }
 
-$valid = $validate->isValid();
+$valid = $validate->isValid("hack");
 echo json_encode($valid);
 //echo $xmldata;
 
